@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Tiket Event</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f6ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4D57FF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f4ff;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background-color: #4D57FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #3039d4;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #4D57FF;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="back-link">&larr; Kembali ke Menu Utama</a>
+        <h2>Daftar Tiket Event</h2>
+
+        {% if events %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Event</th>
+                    <th>Jumlah Tiket</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ event.nama_event }}</td>
+                    <td>{{ event.jumlah_tiket }}</td>
+                    <td>
+                        <a href="{{ url_for('generate_tiket', event_id=event.id) }}">
+                            <button class="btn">Generate Tiket</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Tidak ada event yang tersedia.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

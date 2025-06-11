@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Manajemen Tiket</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #6B73FF, #000DFF);
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #fff;
+            color: #333;
+            border-radius: 12px;
+            padding: 30px;
+            width: 280px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            background-color: #E8EBFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .icon-circle i {
+            font-size: 24px;
+            color: #4D57FF;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #ccc;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a2e5e6b5b2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistem Manajemen Tiket</h1>
+        <p class="subtitle">Kelola tiket dengan mudah dan efisien</p>
+        <div class="menu">
+            <a href="{{ url_for('tambah_event_form') }}" class="card">
+                <div class="icon-circle">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <h3>Buat Tiket Baru</h3>
+                <p>Buat tiket baru untuk event dengan kategori yang berbeda</p>
+            </a>
+            <a href="{{ url_for('list_tiket') }}" class="card">
+                <div class="icon-circle">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <h3>Kelola Tiket</h3>
+                <p>Lihat dan kelola tiket yang sudah ada</p>
+            </a>
+        </div>
+        <div class="footer">
+            © {{ year }} Sistem Manajemen Tiket
+        </div>
+    </div>
+</body>
+</html>
